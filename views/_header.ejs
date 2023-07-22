@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/css/header.css">
+<div>
+    <div class="navBar">
+        <% if (locals.user){ %>
+            <%if(locals.user.isAdmin){%>
+                <div class="logOut">
+                    <a href="/"> <small>Home</small> </a>
+                    <a href="/admin/assignWork"> <small>Assign Task</small> </a>
+                    <a href="/admin/view-employee"> <small>Employees</small> </a>
+                    <a href="/admin/add-employee"> <small>Add Employee</small> </a>
+                    <span class="nameOfUser"><img src="../images/profile.jpg"><a href="/"><small><%= locals.user.name%></small></a></span> 
+                    <a href="/users/sign-out" > <small>LogOut</small></a>
+                </div>
+            <%}else{%>    
+                <div class="logOut"> 
+                    <span class="nameOfUser-nonAdmin"><img src="../images/profile.jpg"><a href="/"><small><%= locals.user.name%></small></a></span> 
+                    <a href="/users/sign-out" > <small>LogOut</small></a>
+            </div>
+            <%}%>
+            
+        <%} else { %>
+            <div class="noUser">
+                <ul>
+                    <li> <a href="/users/sign-in"> Sign-In </a> </li>
+                    <li>  <a href="/users/sign-up"> Sign-Up </a> </li>
+                </ul>
+            </div>
+        
+        <%}%>       
+    </div>
+</div> 

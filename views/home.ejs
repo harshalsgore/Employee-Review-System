@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <%if(locals.user){%>
+ 
+        <div class="home-box">
+            <i class="text-colr">Employee Review System is an application that allows employees to submit feedback toward each other’s performance.</i>
+            <hr>
+        </div>
+
+        <div class="home-box" style="margin-top: 40px;">
+            <div class="employeereview">Please review your co-employees<br>
+            </div>
+
+            <div class="reviewBox">
+                <% for(let i = 0 ;i<recipent.length ; i++ ) {%>
+                    <%if(recipent[i] != null) {%>
+                        <div class="outerBox">
+                            <h6>
+                                To : <%= recipent[i].name%>
+                            </h6>
+                            <div class="innerBox">
+                                <form action="/reviews/newReview/<%= recipent[i]._id %>" method="get">
+                                    <textarea class="formClass" placeholder="Review, here !" name="newReview" rows="5"
+                                    id="floatingTextarea2">
+        
+                                    </textarea>
+                                    <br>
+                                    <button type="submit" class="submitHomeButton"> Submit </button>
+                                </form>
+                            </div>
+                        </div>
+                    <%}%>
+                <%}%>   
+            </div>
+        </div>
+
+        <div class="home-box" style="margin-top: 30px;">
+           <div class="myreview">My Reviews</div>
+            <div class="reviewBox">
+                <div class="card-out" style="margin-top: 10px;">
+                    <% for(let review of reviews ) {%>
+                        <div class="in-card">
+                            <h5 class="cls-txt" style="margin-top: 10px">Message : <%= review.content %> </h5>
+                            <p class="cls-txt">From : <%= review.name %> </p>
+                            
+                        </div>
+                    <%}%>    
+                </div>
+            
+
+        </div>
+
+    </div>
+    <%}%>
+
+</body>
+</html>

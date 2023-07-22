@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/admin.css">
+<div class="container-fluid mt-2">
+    <div class="heading">Assign Reviewer Task</div>
+    <div class="reviewContainer">
+
+        <div class="reviewer">
+
+            <div class="text-center" style="text-decoration: none;">
+                Select a Reviewer and a Recipient
+            </div>
+            <hr>
+
+            <form action="/admin/setReviewes" method="POST" class="mt-1 card-body">
+                <div>
+                    Set Reviewer
+                    <select class="form-select form-select" aria-label="Default select example" name="sender">
+                        <option selected>Sender</option>
+                        <% for(let i = 0; i<employee.length ; i++){ %>
+                            
+                            <option value= <%= employee[i].id %> > <%= employee[i].name %> </option>
+                            
+                        <%}%>    
+                    </select>
+                </div>
+
+                <div class="review" style="margin-top: 20px;">
+                  Select the Recipient Employee
+                    <select class="form-select form-select" aria-label="Default select example" name="reciver">
+                        <option selected>Reciever</option>
+                        <% for(let i = 0; i<employee.length ; i++){ %>
+                        
+                            <option value= <%= employee[i].id %> > <%= employee[i].name %> </option>
+                            
+                        <%}%>
+                    </select>
+                </div>
+
+                <div class="submitButtons">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

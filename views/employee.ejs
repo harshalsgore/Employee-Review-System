@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/admin.css">
+
+<h5 class="text-center mt-3">List of all the Employees</h5>
+
+<div class="container mt-5">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Admin</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i<employes.length; i++) {%>
+            <tr>
+              <th scope="row"><%= i+1 %></th>
+              <td> <%= employes[i].name%> </td>
+              <td> <%= employes[i].email%> </td>
+              <td> ********** </td>
+              <td> <%= employes[i].isAdmin%> </td>
+              
+              <% if(!employes[i].isAdmin) {%>
+                <td> 
+                  <a href="/users/makeAdmin/<%= employes[i]._id %>" class="btn btn-md">Make Admin</a>
+              </td>
+              <%}else if(locals.user.id == employes[i]._id) {%>
+                <td>      
+                </td>
+              <%}else{%><td> 
+                  <a href="/users/removeAdmin/<%= employes[i]._id %>" class="btn btn-md">Remove Admin</a>
+              </td><%}%> 
+              <% if(locals.user.id != employes[i]._id) {%>
+                <td> 
+                  <a href="/admin/deleteEmployee/<%= employes[i]._id %>" class="btn btn-md">Delete User</a>
+              </td>
+              <%}else{%><td> </td><%}%> 
+            </tr>  
+          <%}%>
+          
+        </tbody>
+      </table>
+</div>
