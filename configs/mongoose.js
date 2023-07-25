@@ -6,10 +6,10 @@ mongoose.connect('mongodb+srv://harshalsgore:YLWXQoTvv7T5RphA@cluster0.uucjlco.m
 
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console,'error connecting to db'));
+db.on('error', console.error.bind(console,"Error connecting to MongoDB"));
 
 db.once('open', function(){
-    console.log("Connected to db")
+    console.log("Connected to Database :: MongoDB")
 });
 
 module.exports = db
